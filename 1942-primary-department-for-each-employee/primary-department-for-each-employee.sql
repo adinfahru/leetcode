@@ -10,7 +10,7 @@ select
 	department_id
 from Employee
 where primary_flag = 'Y'
-union
+union all
 select
 	employee_id,
 	max(department_id) as department_id
