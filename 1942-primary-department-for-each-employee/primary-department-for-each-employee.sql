@@ -10,12 +10,10 @@ select
 	department_id
 from Employee
 where primary_flag = 'Y'
-OR
-employee_id IN 
-(
+union all
 select
-	employee_id
+	employee_id,
+	max(department_id) as department_id
 from Employee
 group by employee_id
 having count(primary_flag) = 1
-)
