@@ -1,5 +1,9 @@
 -- Write your PostgreSQL query statement below
-select p.product_name, s.year, s.price
-from Product as p
-join Sales as s
-    on p.product_id = s.product_id
+
+SELECT
+    product_name,
+    year,
+    price
+FROM Product
+JOIN Sales 
+    ON Product.product_id = Sales.product_id
