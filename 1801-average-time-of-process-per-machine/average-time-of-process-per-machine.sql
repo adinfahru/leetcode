@@ -1,12 +1,12 @@
-/* Write your T-SQL query statement below */
+-- Write your PostgreSQL query statement below
 
-select
-	a1.machine_id,
-	round(avg(a2.timestamp - a1.timestamp), 3) as processing_time
-from activity as a1
-left join activity as a2
-	on a1.machine_id = a2.machine_id
-	and a1.process_id = a2.process_id
-	and a1.activity_type = 'start'
-	and a2.activity_type = 'end'
-group by a1.machine_id
+SELECT
+	a.machine_id,
+	ROUND(AVG(b.timestamp - a.timestamp)::NUMERIC, 3) AS processing_time
+FROM activity a 
+JOIN activity b
+	ON a.machine_id = b.machine_id
+	AND a.process_id = b.process_id
+	AND a.activity_type = 'start'
+	AND b.activity_type = 'end'
+GROUP BY a.machine_id
